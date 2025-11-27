@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://nighteastwood001"]
+
+[ext_resource type="PackedScene" uid="uid://cm2fsmwskvqhc" path="res://levels/MP_Eastwood.tscn" id="1_eastwood"]
+
+[sub_resource type="GDScript" id="GDScript_night_ops"]
+script/source = "extends Node3D
+
+@onready var world_env = $WorldEnvironment
+
+func _ready():
+	# Wait for map to load
+	await get_tree().process_frame
+	await get_tree().process_frame
+	
+	var map_instance = $MP_Eastwood
+	if map_instance:
+		_remove_day_environment_recursive(map_instance)
+		_ignite_lights_recursive(map_instance)
+	
+	# Attempt to find a player or camera to attach rain to
+	var camera = get_viewport().get_camera_3d()
+	if camera:
+		_create_rain(camera)
+	else:
+		# Fallback: try to find a node that might be the player
+		var players = get_tree().get_nodes_in_group(\"Player\")
+		if players.size() > 0:
+			_create_rain(players[0])
+
+func _remove_day_environment_recursive(node):
+	for child in node.get_children():
+		if child is DirectionalLight3D or child is WorldEnvironment:
+			child.queue_free()
+		else:
+			_remove_day_environment_recursive(child)
+
+func _ignite_lights_recursive(node):
+	for child in node.get_children():
+		var n_name = child.name.to_lower()
+		if \"lamp\" in n_name or \"street_light\" in n_name:
+			var light = OmniLight3D.new()
+			light.light_color = Color.ORANGE
+			light.light_energy = 2.0
+			light.shadow_enabled = true
+			child.add_child(light)
+		elif \"pool\" in n_name or \"fountain\" in n_name:
+			var light = OmniLight3D.new()
+			light.light_color = Color.CYAN
+			light.light_energy = 3.0
+			child.add_child(light)
+		
+		_ignite_lights_recursive(child)
+
+func _create_rain(target):
+	var particles = GPUParticles3D.new()
+	var material = ParticleProcessMaterial.new()
+	material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
+	material.emission_box_extents = Vector3(15, 10, 15)
+	material.direction = Vector3(0, -1, 0)
+	material.spread = 5.0
+	material.initial_velocity_min = 10.0
+	material.initial_velocity_max = 20.0
+	particles.process_material = material
+	
+	var mesh = RibbonTrailMesh.new()
+	mesh.size = 0.05
+	mesh.sections = 2
+	mesh.section_length = 0.5
+	particles.draw_pass_1 = mesh
+	
+	particles.amount = 2000
+	particles.lifetime = 1.0
+	particles.local_coords = false # Rain should fall in world space
+	
+	target.add_child(particles)
+	particles.position = Vector3(0, 10, 0) # Offset above player
+
+func _input(event):
+	if event.is_action_pressed(\"Interact\") or (event is InputEventKey and event.pressed and event.keycode == KEY_E):
+		_toggle_nvg()
+
+var nvg_on = false
+func _toggle_nvg():
+	nvg_on = !nvg_on
+	if nvg_on:
+		world_env.environment.ambient_light_color = Color(0.0, 1.0, 0.0) # Green
+		world_env.environment.ambient_light_energy = 0.5
+		world_env.environment.tonemap_exposure = 2.0 # Boost brightness
+	else:
+		world_env.environment.ambient_light_color = Color(0.0, 0.0, 0.1) # Navy/Black
+		world_env.environment.ambient_light_energy = 1.0
+		world_env.environment.tonemap_exposure = 1.0
+"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_night"]
+sky_top_color = Color(0, 0, 0.1, 1)
+sky_horizon_color = Color(0, 0, 0.1, 1)
+ground_bottom_color = Color(0, 0, 0.1, 1)
+ground_horizon_color = Color(0, 0, 0.1, 1)
+
+[sub_resource type="Sky" id="Sky_night"]
+sky_material = SubResource("ProceduralSkyMaterial_night")
+
+[sub_resource type="Environment" id="Environment_night"]
+background_mode = 2
+sky = SubResource("Sky_night")
+ambient_light_source = 2
+ambient_light_color = Color(0, 0, 0.1, 1)
+
+[node name="NightEastwood" type="Node3D"]
+script = SubResource("GDScript_night_ops")
+
+[node name="MP_Eastwood" parent="." instance=ExtResource("1_eastwood")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_night")

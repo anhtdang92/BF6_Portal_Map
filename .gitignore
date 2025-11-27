@@ -1,0 +1,20 @@
+# Ignore everything by default
+*
+
+# Unignore specific files
+!PROJECT_INDEX.md
+!.gitignore
+
+# Unignore root mods directory and its contents
+!mods/
+!mods/**
+
+# Unignore GodotProject directory (but we will filter its contents)
+!GodotProject/
+
+# Ignore everything inside GodotProject by default
+GodotProject/*
+
+# Unignore mods directory inside GodotProject
+!GodotProject/mods/
+!GodotProject/mods/**

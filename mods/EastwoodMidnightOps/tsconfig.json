@@ -1,0 +1,17 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "types": [
+            "../../code/mod"
+        ],
+        "paths": {
+            "modlib": [
+                "../../code/modlib"
+            ]
+        },
+        "outDir": "dist"
+    },
+    "include": [
+        "night_eastwood.ts"
+    ]
+}
