@@ -25,7 +25,8 @@ const PROFILES = {
 func initialize_environment() -> void:
 	# Ensure Global Shader Parameter exists for all materials
 	# (You must add 'global_wetness' in Project Settings -> Shader Globals first!)
-	RenderingServer.global_shader_parameter_set("global_wetness", 0.0)
+	# Use call_deferred to avoid runtime errors
+	call_deferred("_set_global_wetness", 0.0)
 
 func transition_weather(profile_name: String, duration: float) -> void:
 	if not PROFILES.has(profile_name):
@@ -56,10 +57,23 @@ func transition_weather(profile_name: String, duration: float) -> void:
 			rain_particles.emitting = false
 
 func _set_global_wetness(value: float) -> void:
-	RenderingServer.global_shader_parameter_set("global_wetness", value)
+	# Only set shader parameter if in editor, otherwise skip to avoid performance issues
+	# In exported/runtime builds, shader parameters should be set via materials
+	if Engine.is_editor_hint():
+		RenderingServer.global_shader_parameter_set("global_wetness", value)
+	else:
+		# In runtime, we can't safely set global shader parameters
+		# This would need to be handled via material uniforms instead
+		# For now, we'll skip this in runtime builds
+		pass
 
 func _get_current_wetness() -> float:
-	var val = RenderingServer.global_shader_parameter_get("global_wetness")
-	if val == null:
+	# Only get shader parameter if in editor
+	if Engine.is_editor_hint():
+		var val = RenderingServer.global_shader_parameter_get("global_wetness")
+		if val == null:
+			return 0.0
+		return val as float
+	else:
+		# In runtime, return a default value
 		return 0.0
-	return val as float

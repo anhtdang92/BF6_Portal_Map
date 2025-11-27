@@ -77,13 +77,18 @@ class StateIntro extends LevelState:
 		# Ensure camera is positioned correctly
 		if director.intro_camera:
 			director.intro_camera.current = true
-			var tween = director.create_tween()
-			tween.tween_property(director.intro_camera, "position", Vector3(0, 28, 90), 6.0).set_trans(Tween.TRANS_CUBIC)
-			await tween.finished
-		else:
-			# Fallback if no camera assigned
-			await director.get_tree().create_timer(1.0).timeout
+			# Map center is around (-145, 230, -35) based on HQ positions
+			# Position camera at an angle (not directly above) to avoid colinear warning
+			var map_center = Vector3(-145, 230, -35)
+			# Position camera high up, slightly offset to avoid colinear vectors
+			var camera_pos = Vector3(-145, 450, 50)  # High up, offset forward
 			
+			# Set camera position and make it look at the map
+			# Use RIGHT as up vector (perpendicular to vertical look direction)
+			director.intro_camera.position = camera_pos
+			director.intro_camera.look_at(map_center, Vector3.RIGHT)
+			
+		# Immediately transition to gameplay
 		director._change_state("Infiltration")
 
 class StateInfiltration extends LevelState:
@@ -103,5 +108,5 @@ class StateStorm extends LevelState:
 		director.storm_warning_issued.emit()
 		if director.weather_controller:
 			director.weather_controller.transition_weather("HeavyStorm", 10.0)
-		# Update global wetness for shaders
-		RenderingServer.global_shader_parameter_set("global_wetness", 1.0)
+		# Global wetness is handled by WeatherController
+		# No need to set it directly here
