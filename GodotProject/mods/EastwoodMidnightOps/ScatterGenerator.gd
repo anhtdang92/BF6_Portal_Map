@@ -39,11 +39,11 @@ func generate_debris() -> void:
 			rng.randf_range(-area_extents.z, area_extents.z)
 		)
 		
-		var basis = Basis(Vector3.UP, rng.randf() * TAU) # Random Y rotation
+		var instance_basis = Basis(Vector3.UP, rng.randf() * TAU) # Random Y rotation
 		var scale_val = rng.randf_range(0.8, 1.2)
-		var transform = Transform3D(basis * scale_val, pos)
+		var instance_transform = Transform3D(instance_basis * scale_val, pos)
 		
-		mm.set_instance_transform(i, transform)
+		mm.set_instance_transform(i, instance_transform)
 		
 		# Optional: Darken wet debris slightly using vertex color
 		var col = Color(0.6, 0.6, 0.6) # Base grime

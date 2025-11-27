@@ -13,9 +13,9 @@ extends Node3D
 @export var match_duration: float = 1200.0 # 20 minutes
 
 # Signals for global listeners (UI, Audio System)
-signal match_started
-signal storm_warning_issued
-signal match_ended(final_score: Dictionary)
+@warning_ignore("unused_signal") signal match_started
+@warning_ignore("unused_signal") signal storm_warning_issued
+@warning_ignore("unused_signal") signal match_ended(final_score: Dictionary)
 
 # State Machine Variables
 var _current_state: LevelState
@@ -56,7 +56,7 @@ func _change_state(state_name: String) -> void:
 		_current_state.exit()
 	
 	_current_state = _states[state_name]
-	print_rich("[b]Transitioning to State:[/b] %s" % state_name)
+	# print_rich("[b]Transitioning to State:[/b] %s" % state_name)
 	_current_state.enter()
 
 # ═══════════════════════════════════════════════════════════
@@ -76,17 +76,8 @@ class StateIntro extends LevelState:
 	func enter():
 		# Ensure camera is positioned correctly
 		if director.intro_camera:
+			# Use editor camera to view map manually
 			director.intro_camera.current = true
-			# Map center is around (-145, 230, -35) based on HQ positions
-			# Position camera at an angle (not directly above) to avoid colinear warning
-			var map_center = Vector3(-145, 230, -35)
-			# Position camera high up, slightly offset to avoid colinear vectors
-			var camera_pos = Vector3(-145, 450, 50)  # High up, offset forward
-			
-			# Set camera position and make it look at the map
-			# Use RIGHT as up vector (perpendicular to vertical look direction)
-			director.intro_camera.position = camera_pos
-			director.intro_camera.look_at(map_center, Vector3.RIGHT)
 			
 		# Immediately transition to gameplay
 		director._change_state("Infiltration")
@@ -98,7 +89,7 @@ class StateInfiltration extends LevelState:
 		if director.weather_controller:
 			director.weather_controller.transition_weather("ClearNight", 5.0)
 		
-	func update(delta):
+	func update(_delta):
 		# Trigger the storm if a random condition is met or time passes
 		if randf() < 0.0001: # Rare random trigger
 			director._change_state("Storm")
