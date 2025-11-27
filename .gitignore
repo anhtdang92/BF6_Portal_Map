@@ -18,3 +18,11 @@ GodotProject/*
 # Unignore mods directory inside GodotProject
 !GodotProject/mods/
 !GodotProject/mods/**
+
+# Unignore code directory
+!code/
+!code/**
+
+# Unignore config files
+!package.json
+!tsconfig.json

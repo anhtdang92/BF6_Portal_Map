@@ -1,0 +1,9 @@
+{
+  "name": "portal_sdk",
+  "version": "0.0.1",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "20.6.0",
+    "typescript": "^5.9.3"
+  }
+}

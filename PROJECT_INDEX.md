@@ -22,9 +22,8 @@ This is the Battlefield 6 Portal SDK, based on the Godot Engine (v4.4.1). It pro
     - **gdplugins/**: Godot plugins.
     - **mod/**: TypeScript definitions (`index.d.ts`) for modding.
     - **modlib/**: TypeScript library (`index.ts`) for mods.
-- **mods/**: Example mods and templates.
-    - **AcePursuit/**, **BombSquad/**, **BumperCars/**, etc.: Example mod directories.
-    - **_StartHere_BasicTemplate/**: Template for new mods.
+- **mods/**: Custom mods directory.
+    - **EastwoodMidnightOps/**: Night mode mod for the Eastwood map with dynamic lighting and rain effects.
 - **python/**: Bundled Python 3.11 environment, likely used for SDK tooling.
 - **Godot_v4.4.1-stable_win64.exe**: The Godot editor executable.
 - **README.html**: Documentation.
