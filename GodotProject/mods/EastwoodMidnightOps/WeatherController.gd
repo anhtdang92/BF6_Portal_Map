@@ -1,5 +1,5 @@
 class_name WeatherController
-extends Node
+extends Node3D
 
 @export_group("Environmental Nodes")
 @export var world_env: WorldEnvironment

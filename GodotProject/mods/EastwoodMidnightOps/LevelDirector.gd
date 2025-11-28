@@ -5,9 +5,9 @@ extends Node3D
 # CONFIGURATION
 # ═══════════════════════════════════════════════════════════
 @export_group("Systems")
-@export var weather_controller: WeatherController
-@export var scatter_system: ScatterGenerator
-@export var intro_camera: Camera3D
+# @export var weather_controller: WeatherController
+# @export var scatter_system: ScatterGenerator
+# @export var intro_camera: Camera3D
 
 @export_group("Game Loop")
 @export var match_duration: float = 1200.0 # 20 minutes
