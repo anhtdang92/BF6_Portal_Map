@@ -3,22 +3,6 @@ extends Node3D
 
 @export_group("Environmental Nodes")
 @export var world_env: WorldEnvironment
-@export var sun_light: DirectionalLight3D
-@export var rain_particles: GPUParticles3D
-
-# Settings for different weather profiles
-const PROFILES = {
-	"ClearNight": {
-		"fog_density": 0.01,
-		"fog_albedo": Color(0.05, 0.05, 0.1),
-		"light_energy": 0.2,
-		"wetness": 0.1
-	},
-	"HeavyStorm": {
-		"fog_density": 0.15, # High density for volumetric obstruction
-		"fog_albedo": Color(0.02, 0.02, 0.05),
-		"light_energy": 0.0, # Almost pitch black, relies on lightning
-		"wetness": 1.0
 	}
 }
 
