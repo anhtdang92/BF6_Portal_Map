@@ -1,0 +1,57 @@
+{
+    "Portal_Dynamic": [
+        {
+            "name": "SkyPlatform",
+            "index": "0",
+            "type": "BarrierConcreteWall_01_160x385",
+            "right": {
+                "x": 50,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": -2.18557e-06,
+                "z": 50
+            },
+            "front": {
+                "x": 0,
+                "y": -50,
+                "z": -2.18557e-06
+            },
+            "position": {
+                "x": 0,
+                "y": 2000,
+                "z": 0
+            },
+            "id": "SkyPlatform"
+        },
+        {
+            "name": "SpawnPoint_Sky",
+            "index": "1",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": 0,
+                "y": 2005,
+                "z": 0
+            },
+            "id": "SpawnPoint_Sky"
+        }
+    ],
+    "Static": []
+}

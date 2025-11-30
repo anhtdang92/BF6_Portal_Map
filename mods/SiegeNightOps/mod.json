@@ -1,0 +1,14 @@
+{
+    "Name": "Siege Night Ops",
+    "Description": "Siege of Cairo (Abbasid) Night Mode using Sky Platform technique.",
+    "Authors": [
+        "Antigravity"
+    ],
+    "Version": "1.0.0",
+    "EntryPoints": [
+        {
+            "Type": "Client",
+            "Path": "dist/siege_night.js"
+        }
+    ]
+}

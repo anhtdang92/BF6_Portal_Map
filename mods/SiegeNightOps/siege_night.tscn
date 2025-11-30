@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://siege_night_ops"]
+
+[ext_resource type="PackedScene" uid="uid://mp_abbasid" path="res://levels/MP_Abbasid.tscn" id="1_abbasid"]
+[ext_resource type="PackedScene" uid="uid://spawnpoint" path="res://objects/entities/SpawnPoint.tscn" id="3_spawn"]
+[ext_resource type="PackedScene" uid="uid://barrier" path="res://objects/Shared/Generic/Military/Props/BarrierConcreteWall_01_160x385.tscn" id="4_wall"]
+
+[node name="SiegeNight" instance=ExtResource("1_abbasid")]
+
+[node name="SkyPlatform" parent="." index="0" instance=ExtResource("4_wall")]
+transform = Transform3D(50, 0, 0, 0, -2.18557e-06, -50, 0, 50, -2.18557e-06, 0, 2000, 0)
+
+[node name="SpawnPoint_Sky" parent="." index="1" instance=ExtResource("3_spawn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2005, 0)
