@@ -3,11 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://mp_abbasid" path="res://levels/MP_Abbasid.tscn" id="1_abbasid"]
 [ext_resource type="PackedScene" uid="uid://spawnpoint" path="res://objects/entities/SpawnPoint.tscn" id="3_spawn"]
 [ext_resource type="PackedScene" uid="uid://barrier" path="res://objects/Shared/Generic/Military/Props/BarrierConcreteWall_01_160x385.tscn" id="4_wall"]
+[ext_resource type="Environment" uid="uid://env_night" path="res://mods/EastwoodMidnightOps/night_environment.tres" id="2_env"]
 
 [node name="SiegeNight" instance=ExtResource("1_abbasid")]
 
 [node name="SkyPlatform" parent="." index="0" instance=ExtResource("4_wall")]
-transform = Transform3D(50, 0, 0, 0, -2.18557e-06, -50, 0, 50, -2.18557e-06, 0, 2000, 0)
+transform = Transform3D(50, 0, 0, 0, -2.18557e-06, -50, 0, 50, -2.18557e-06, 0, 1000, 0)
 
 [node name="SpawnPoint_Sky" parent="." index="1" instance=ExtResource("3_spawn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2005, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1005, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
+environment = ExtResource("2_env")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1100, 0)
+light_color = Color(0.1, 0.1, 0.3, 1)
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="StreetLamp" type="SpotLight3D" parent="SkyPlatform" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+light_energy = 5.0
+light_range = 20.0
+light_color = Color(1, 0.9, 0.7, 1)

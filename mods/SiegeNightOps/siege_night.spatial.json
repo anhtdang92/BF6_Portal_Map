@@ -21,7 +21,7 @@
             },
             "position": {
                 "x": 0,
-                "y": 2000,
+                "y": 1000,
                 "z": 0
             },
             "id": "SkyPlatform"
@@ -47,10 +47,105 @@
             },
             "position": {
                 "x": 0,
-                "y": 2005,
+                "y": 1005,
                 "z": 0
             },
             "id": "SpawnPoint_Sky"
+        },
+        {
+            "name": "WorldEnvironment",
+            "type": "WorldEnvironment",
+            "index": "2",
+            "environment": "mods/EastwoodMidnightOps/night_environment.tres",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "id": "WorldEnvironment"
+        },
+        {
+            "name": "DirectionalLight3D",
+            "type": "DirectionalLight3D",
+            "index": "3",
+            "light_energy": 0.0,
+            "shadow_enabled": true,
+            "light_color": [
+                0.1,
+                0.1,
+                0.3,
+                1
+            ],
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": -4.37114e-08,
+                "z": -1
+            },
+            "front": {
+                "x": 0,
+                "y": 1,
+                "z": -4.37114e-08
+            },
+            "position": {
+                "x": 0,
+                "y": 1100,
+                "z": 0
+            },
+            "id": "DirectionalLight3D"
+        },
+        {
+            "name": "StreetLamp",
+            "type": "SpotLight3D",
+            "index": "0",
+            "light_energy": 5.0,
+            "light_range": 20.0,
+            "light_color": [
+                1,
+                0.9,
+                0.7,
+                1
+            ],
+            "right": {
+                "x": 50,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 50.00000000000009,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 50.00000000000009
+            },
+            "position": {
+                "x": 0,
+                "y": 999.99998907215,
+                "z": 250
+            },
+            "id": "SkyPlatform/StreetLamp"
         }
     ],
     "Static": []
