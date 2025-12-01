@@ -81,9 +81,9 @@
             "id": "SkyPlatform/AviationLight"
         },
         {
-            "name": "WallLamp",
+            "name": "FloodLight",
             "index": "1",
-            "type": "WallLamp_Thin_03",
+            "type": "FloodLight_Rect_01_Pole",
             "right": {
                 "x": 1,
                 "y": 0,
@@ -104,7 +104,7 @@
                 "y": 749.99999562886,
                 "z": 99.99998907215
             },
-            "id": "SkyPlatform/WallLamp"
+            "id": "SkyPlatform/FloodLight"
         }
     ],
     "Static": []

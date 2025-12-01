@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://spawnpoint" path="res://objects/entities/SpawnPoint.tscn" id="3_spawn"]
 [ext_resource type="PackedScene" uid="uid://barrier" path="res://objects/Shared/Generic/Military/Props/BarrierConcreteWall_01_160x385.tscn" id="4_wall"]
 [ext_resource type="PackedScene" uid="uid://aviation_light" path="res://objects/Turkmenistan/MP_FireStorm/Generic/Industrial/Props/AviationLight_01.tscn" id="5_light1"]
-[ext_resource type="PackedScene" uid="uid://wall_lamp" path="res://objects/Shared/Generic/Common/LightFixtures/WallLamp_Thin_03.tscn" id="6_light2"]
+[ext_resource type="PackedScene" uid="uid://flood_light" path="res://objects/Shared/Generic/Industrial/Props/FloodLight_Rect_01_Pole.tscn" id="6_light2"]
 
 [node name="SiegeNight" instance=ExtResource("1_abbasid")]
 
@@ -17,5 +17,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1005, 0)
 [node name="AviationLight" parent="SkyPlatform" index="0" instance=ExtResource("5_light1")]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, -3.55271e-15, 0, 3.55271e-15, 0.02, 0, 2, 0)
 
-[node name="WallLamp" parent="SkyPlatform" index="1" instance=ExtResource("6_light2")]
+[node name="FloodLight" parent="SkyPlatform" index="1" instance=ExtResource("6_light2")]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, -3.55271e-15, 0, 3.55271e-15, 0.02, 0, 2, 5)
