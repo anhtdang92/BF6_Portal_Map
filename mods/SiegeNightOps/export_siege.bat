@@ -11,6 +11,13 @@ echo Exporting siege_night.tscn...
 "%PYTHON_EXE%" "%EXPORT_SCRIPT%" "%PROJECT_ROOT%\mods\SiegeNightOps\siege_night.tscn" "%PROJECT_ROOT%\FbExportData" "%PROJECT_ROOT%\mods\SiegeNightOps"
 if %ERRORLEVEL% NEQ 0 (
     echo Error exporting siege_night.tscn
+    exit /b %ERRORLEVEL%
+)
+
+echo Patching JSON with metadata...
+"%PYTHON_EXE%" "%PROJECT_ROOT%\mods\SiegeNightOps\patch_json.py" "%PROJECT_ROOT%\mods\SiegeNightOps\siege_night.spatial.json"
+if %ERRORLEVEL% NEQ 0 (
+    echo Error patching JSON
     pause
     exit /b %ERRORLEVEL%
 )

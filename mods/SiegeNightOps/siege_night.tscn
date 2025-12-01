@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://siege_night_ops"]
+[gd_scene load_steps=6 format=3 uid="uid://siege_night_ops"]
 
 [ext_resource type="PackedScene" uid="uid://mp_abbasid" path="res://levels/MP_Abbasid.tscn" id="1_abbasid"]
 [ext_resource type="PackedScene" uid="uid://spawnpoint" path="res://objects/entities/SpawnPoint.tscn" id="3_spawn"]
 [ext_resource type="PackedScene" uid="uid://barrier" path="res://objects/Shared/Generic/Military/Props/BarrierConcreteWall_01_160x385.tscn" id="4_wall"]
-[ext_resource type="Environment" uid="uid://env_night" path="res://mods/EastwoodMidnightOps/night_environment.tres" id="2_env"]
+[ext_resource type="PackedScene" uid="uid://aviation_light" path="res://objects/Turkmenistan/MP_FireStorm/Generic/Industrial/Props/AviationLight_01.tscn" id="5_light1"]
+[ext_resource type="PackedScene" uid="uid://wall_lamp" path="res://objects/Shared/Generic/Common/LightFixtures/WallLamp_Thin_03.tscn" id="6_light2"]
 
 [node name="SiegeNight" instance=ExtResource("1_abbasid")]
 
@@ -13,17 +14,8 @@ transform = Transform3D(50, 0, 0, 0, -2.18557e-06, -50, 0, 50, -2.18557e-06, 0, 
 [node name="SpawnPoint_Sky" parent="." index="1" instance=ExtResource("3_spawn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1005, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
-environment = ExtResource("2_env")
+[node name="AviationLight" parent="SkyPlatform" index="0" instance=ExtResource("5_light1")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, -3.55271e-15, 0, 3.55271e-15, 0.02, 0, 2, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1100, 0)
-light_color = Color(0.1, 0.1, 0.3, 1)
-light_energy = 0.0
-shadow_enabled = true
-
-[node name="StreetLamp" type="SpotLight3D" parent="SkyPlatform" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
-light_energy = 5.0
-light_range = 20.0
-light_color = Color(1, 0.9, 0.7, 1)
+[node name="WallLamp" parent="SkyPlatform" index="1" instance=ExtResource("6_light2")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, -3.55271e-15, 0, 3.55271e-15, 0.02, 0, 2, 5)

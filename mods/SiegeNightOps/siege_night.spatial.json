@@ -1,4 +1,6 @@
 {
+    "mapName": "Abbasid",
+    "gameMode": "Conquest",
     "Portal_Dynamic": [
         {
             "name": "SkyPlatform",
@@ -53,10 +55,9 @@
             "id": "SpawnPoint_Sky"
         },
         {
-            "name": "WorldEnvironment",
-            "type": "WorldEnvironment",
-            "index": "2",
-            "environment": "mods/EastwoodMidnightOps/night_environment.tres",
+            "name": "AviationLight",
+            "index": "0",
+            "type": "AviationLight_01",
             "right": {
                 "x": 1,
                 "y": 0,
@@ -64,33 +65,25 @@
             },
             "up": {
                 "x": 0,
-                "y": 1,
-                "z": 0
-            },
-            "front": {
-                "x": 0,
-                "y": 0,
+                "y": -4.37115776355e-08,
                 "z": 1
             },
+            "front": {
+                "x": 0,
+                "y": -1,
+                "z": -4.37115776355e-08
+            },
             "position": {
                 "x": 0,
-                "y": 0,
-                "z": 0
+                "y": 999.99999562886,
+                "z": 100
             },
-            "id": "WorldEnvironment"
+            "id": "SkyPlatform/AviationLight"
         },
         {
-            "name": "DirectionalLight3D",
-            "type": "DirectionalLight3D",
-            "index": "3",
-            "light_energy": 0.0,
-            "shadow_enabled": true,
-            "light_color": [
-                0.1,
-                0.1,
-                0.3,
-                1
-            ],
+            "name": "WallLamp",
+            "index": "1",
+            "type": "WallLamp_Thin_03",
             "right": {
                 "x": 1,
                 "y": 0,
@@ -98,54 +91,20 @@
             },
             "up": {
                 "x": 0,
-                "y": -4.37114e-08,
-                "z": -1
+                "y": -4.37115776355e-08,
+                "z": 1
             },
             "front": {
                 "x": 0,
-                "y": 1,
-                "z": -4.37114e-08
+                "y": -1,
+                "z": -4.37115776355e-08
             },
             "position": {
                 "x": 0,
-                "y": 1100,
-                "z": 0
+                "y": 749.99999562886,
+                "z": 99.99998907215
             },
-            "id": "DirectionalLight3D"
-        },
-        {
-            "name": "StreetLamp",
-            "type": "SpotLight3D",
-            "index": "0",
-            "light_energy": 5.0,
-            "light_range": 20.0,
-            "light_color": [
-                1,
-                0.9,
-                0.7,
-                1
-            ],
-            "right": {
-                "x": 50,
-                "y": 0,
-                "z": 0
-            },
-            "up": {
-                "x": 0,
-                "y": 50.00000000000009,
-                "z": 0
-            },
-            "front": {
-                "x": 0,
-                "y": 0,
-                "z": 50.00000000000009
-            },
-            "position": {
-                "x": 0,
-                "y": 999.99998907215,
-                "z": 250
-            },
-            "id": "SkyPlatform/StreetLamp"
+            "id": "SkyPlatform/WallLamp"
         }
     ],
     "Static": []
