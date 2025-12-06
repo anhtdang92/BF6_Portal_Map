@@ -1,0 +1,66 @@
+{
+    "schemaVersion": "v1.2.0",
+    "header": {
+        "mapName": "MP_Abbasid",
+        "gameMode": "TeamDeathMatch",
+        "description": "Night Operations Platform above Cairo",
+        "tags": [
+            "Night",
+            "Custom"
+        ]
+    },
+    "objects": [
+        {
+            "name": "SkyPlatform",
+            "index": "0",
+            "type": "BarrierConcreteWall_01_160x385",
+            "right": {
+                "x": 50,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 0,
+                "z": 50
+            },
+            "front": {
+                "x": 0,
+                "y": -50,
+                "z": 0
+            },
+            "position": {
+                "x": 0,
+                "y": 800,
+                "z": 0
+            },
+            "id": "SkyPlatform"
+        },
+        {
+            "name": "SpawnPoint_Sky",
+            "index": "1",
+            "type": "SpawnPoint",
+            "right": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "up": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "front": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+            },
+            "position": {
+                "x": 0,
+                "y": 802,
+                "z": 0
+            },
+            "id": "SpawnPoint_Sky"
+        }
+    ]
+}

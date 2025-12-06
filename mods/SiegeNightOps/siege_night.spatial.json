@@ -1,6 +1,6 @@
 {
     "mapName": "Abbasid",
-    "gameMode": "Conquest",
+    "gameMode": "TeamDeathMatch",
     "Portal_Dynamic": [
         {
             "name": "SkyPlatform",

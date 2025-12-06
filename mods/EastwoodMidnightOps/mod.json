@@ -1,9 +1,0 @@
-{
-    "name": "Eastwood Midnight Ops",
-    "description": "A night mode mod for Eastwood map with dynamic lighting and rain.",
-    "authors": [
-        "User"
-    ],
-    "version": "1.0.0",
-    "entry_point": "dist/night_eastwood.js"
-}

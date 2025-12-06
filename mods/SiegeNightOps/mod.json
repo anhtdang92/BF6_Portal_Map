@@ -8,7 +8,7 @@
     "EntryPoints": [
         {
             "Type": "Client",
-            "Path": "dist/siege_night.js"
+            "Path": "dist/index.js"
         }
     ]
 }
